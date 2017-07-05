@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mrchao.www.customviewdemo.MainActivity">
+    android:scrollbars="none">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.mrchao.www.customviewdemo.view.AiLoadView
+                android:id="@+id/aiLoad"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/alSucc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="成功"/>
+
+                <Button
+                    android:id="@+id/alFauil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="失败"/>
+            </LinearLayout>
+
+
+            <com.mrchao.www.customviewdemo.view.HuaWeiLoadView
+                android:id="@+id/huaweiLoad"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+            <com.mrchao.www.customviewdemo.view.SercherIconView
+                android:id="@+id/serCherLoad"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

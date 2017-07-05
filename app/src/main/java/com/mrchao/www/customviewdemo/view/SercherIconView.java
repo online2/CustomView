@@ -23,16 +23,15 @@ import com.mrchao.www.customviewdemo.R;
 public class SercherIconView extends View implements ValueAnimator.AnimatorUpdateListener, Animator.AnimatorListener {
 
     private Paint mPaint;
-    private Path mPathCir;
+    private Path mPathCir,cirDst;
+    private Path mBigPath, bigDst;
     private PathMeasure mPathMeasure;
-    private Path cirDst;
     private float[] pos = new float[2];
     private float[] tan = new float[2];
     private ValueAnimator loadAnim, okAnim, startSerAnim;
     private float mAnimatedValue;
-    private Path mBigPath, bigDst;
-    private int State = 0;
-    private boolean isOver = false;
+    private int State = 0;//状态有四种
+    private boolean isOver = false;//标志位，表示load状态执行完，可以开始画放大镜了
 
     public SercherIconView(Context context) {
         super(context);
@@ -77,16 +76,15 @@ public class SercherIconView extends View implements ValueAnimator.AnimatorUpdat
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         mPathMeasure = new PathMeasure();
-
-        mBigPath = new Path();
+        mBigPath = new Path();//外圆
         bigDst = new Path();
         mBigPath.addArc(new RectF(-70, -70, 70, 70), 45, 359.9f);
         mPathMeasure.setPath(mBigPath, true);
-        mPathMeasure.getPosTan(0, pos, tan);
+        mPathMeasure.getPosTan(0, pos, tan);//记录外圆起点坐标
         float x = pos[0];
         float y = pos[1];
         mPathCir = new Path();
-        mPathCir.addArc(new RectF(-35, -35, 35, 35), 45, 359.9f);
+        mPathCir.addArc(new RectF(-35, -35, 35, 35), 45, 359.9f); //放大镜
         mPathCir.lineTo(x, y);
         cirDst = new Path();
     }
@@ -129,6 +127,12 @@ public class SercherIconView extends View implements ValueAnimator.AnimatorUpdat
         isOver = false;
         State = 1;
         startSerAnim.start();
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                endSer();
+            }
+        }, 6000);
     }
 
     /**
