@@ -48,8 +48,21 @@
                 android:id="@+id/serCherLoad"
                 android:layout_width="80dp"
                 android:layout_height="80dp"/>
+            
+          
 
         </LinearLayout>
+
+        <com.mrchao.www.customviewdemo.chartview.HalfMakerPieView
+            android:id="@+id/dashboard_view_6"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"/>
+        
+        <com.mrchao.www.customviewdemo.chartview.TwoPieView
+            android:id="@+id/dashboard_view_7"
+            android:layout_width="300dp"
+            android:layout_height="300dp"/>
 
 
     </LinearLayout>
